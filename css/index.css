@@ -1,0 +1,107 @@
+/* div{
+	position: relative;
+	width: 100px;
+	height: 100px;
+	opacity: 0.7;
+	border-radius: 20px;
+	border: 1px solid yellowgreen;
+	background-color: yellowgreen;
+	margin-bottom: 50px;
+} */
+
+
+* {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+.wrapper {
+	position: relative;
+	width: 400px;
+	height: 500px;
+	margin: 100px auto 0px auto; 
+	overflow: hidden;
+}
+
+.wrapper .sliderPage {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 2000px;
+	height: 500px;
+}
+
+.wrapper .sliderPage li {
+	float: left;
+	width: 400px;
+	height: 500px;
+}
+
+.wrapper .sliderPage:after {
+	content: '';
+	display: block;
+	clear: both; 
+}
+
+.wrapper .sliderPage li img {
+	width: 100%;
+	height: 100%;
+}
+
+.wrapper .btn {
+	position: absolute;
+	top: 50%;
+	margin-top: -20px;
+
+	width: 30px;
+	height: 40px;
+	font-size: 20px;
+	line-height: 40px;
+	text-align: center;
+	opacity: 0.3;
+	color: #000;
+	background: #ccc;
+	cursor: pointer;
+}
+
+.wrapper .btn:hover {
+	opacity: 0.7;
+}
+
+.wrapper .leftBtn {
+	left: 20px;
+}
+
+.wrapper .rightBtn {
+	right: 20px;
+}
+
+.wrapper .oBtn {
+	position: absolute;
+	bottom: 10px;
+	width: 100%;
+	height: 20px;
+	text-align: center;
+}
+
+.wrapper .oBtn i {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: #ccc;
+	opacity: 1;
+	cursor: pointer;
+	margin-right: 10px; 
+}
+
+.wrapper .oBtn i:hover {
+	opacity: 0.7;
+	background-color: skyblue;
+}
+
+.wrapper .oBtn .active {
+	opacity: 0.8;
+	background-color: skyblue;
+}
