@@ -1,90 +1,4 @@
-// startMove(oDiv,);
-// var oDivArr = document.getElementsByTagName('div');
-
-// oDivArr[0].onmouseenter = function(){
-// 	sstartMove(this,'width',400);
-// 	console.log('11');
-// }
-// oDivArr[0].onmouseleave = function(){
-// 	sstartMove(this,'width',100);
-// }
-// oDivArr[1].onmouseenter = function(){
-// 	sstartMove(this,'height',400);
-// }
-// oDivArr[1].onmouseleave = function(){
-// 	sstartMove(this,'height',100);
-// }
-// oDivArr[2].onmouseenter = function(){
-// 	sstartMove(this,'opacity',50);
-// }
-// oDivArr[2].onmouseleave = function(){
-// 	sstartMove(this,'opacity',100);
-// }
-// oDivArr[3].onmouseenter = function(){
-// 	sstartMove(this,'borderWidth',50); 
-// }
-// oDivArr[3].onmouseleave = function(){
-// 	sstartMove(this,'borderWidth',1);
-// }
-
-// function getStyle(dom,attr){
-// 	if(window.getComputedStyle){
-// 		return window.getComputedStyle(dom,false)[attr];
-// 	}else{
-// 		return dom.currentStyle[attr];
-// 	}
-// }
-
-// function sstartMove(dom,attr,target){
-// 	clearInterval(dom.timer);
-// 	var iSpeed = 0,
-// 		iCur;
-// 	dom.timer = setInterval(function(){
-// 		if(attr === 'opacity'){
-// 			iCur = parseFloat(getStyle(dom,attr)) * 100;
-// 		}else{
-// 			iCur = parseInt(getStyle(dom,attr));
-// 		}
-// 		iSpeed = (target - iCur) /7;
-// 		iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
-// 		if(iCur === target){
-// 			clearInterval(dom.timer);
-// 		}else{
-// 			if(attr === 'opacity'){
-// 				dom.style.opacity = (iCur + iSpeed) / 100;
-// 			}else{
-// 				dom.style[attr] = iCur + iSpeed + 'px';
-// 			}
-// 		}
-// 	},30)
-// }
-
-// document.onkeydown = function(e){
-// 	console.log(e.keyCode);
-// 	switch(e.keyCode){
-// 		case 37:
-// 			startMove(oDiv, {left:oDiv.offsetLeft - 50,function(){
-// 				console.log('left');
-// 			}});
-// 			break;
-// 		case 38:
-// 			startMove(oDiv, {top:oDiv.offsetTop - 50,function(){
-// 				console.log('up');
-// 			}});
-// 			break;
-// 		case 39:
-// 			startMove(oDiv, {left:oDiv.offsetLeft + 50,function(){
-// 				console.log('right');
-// 			}});
-// 			break;
-// 		case 40:
-// 			startMove(oDiv, {top:oDiv.offsetTop + 50,function(){
-// 				console.log('down');
-// 			}});
-// 			break;
-// 	}
-// }
-
+//定义一系列变量
 var oLiArr = document.getElementsByTagName('li'),
 	oSP = document.getElementById('sp'),
 	leftBtn = document.getElementsByTagName('div')[1],
@@ -96,8 +10,7 @@ var oLiArr = document.getElementsByTagName('li'),
 	index = 0,
 	locked = true;
 
-	// console.log(oSP.children);
-
+//控制移动，参数为方向，默认向右
 function controlMove(direction) {
 	if(locked){
 		locked = false;
@@ -106,7 +19,6 @@ function controlMove(direction) {
 			index++;
 			if(oSP.offsetLeft === -len * moveLen) {
 	 			oSP.style.left = '0px';
-				// index = 0;
 			}
 			if(index === len) {
 				index = 0;
@@ -123,9 +35,6 @@ function controlMove(direction) {
 				index = len;	
 			}
 			
-			// if(index === 0) {
-			// 	index = len;
-			// }
 			index--;
 			changeIndex(index);
 			startMove(oSP, {left: oSP.offsetLeft + moveLen}, function() {
@@ -136,6 +45,7 @@ function controlMove(direction) {
 	}
 }
 
+//监听事件
 function bindEvent() {
 	leftBtn.onclick = function(){
 		controlMove('turnLeft');
@@ -143,6 +53,7 @@ function bindEvent() {
 	rightBtn.onclick = function(){
 		controlMove('turnRight');
 	}
+	//轮播图下的小原点
 	for(var i = 0; i < len; i++) {
 		(function(thisIndex) {
 			oIArr[i].onclick = function() {
