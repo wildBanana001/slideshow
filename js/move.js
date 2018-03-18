@@ -1,3 +1,4 @@
+//将运动函数封装成一个JS文件，可复用
 function getStyle(obj, attr) {
     if(obj.currentStyle) {
         return obj.currentStyle[attr];
